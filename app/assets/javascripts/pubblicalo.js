@@ -7,6 +7,7 @@ $('.sort_column').on('click', function () {
     this.childNodes[1].className = "glyphicon glyphicon-sort-by-attributes active"
   }
 })
+
 function switchOffSort() {
   var columns = document.getElementsByClassName("sort_column")
   for (i = 0; i < columns.length; i++) {
@@ -38,7 +39,7 @@ function subAccounts(btnElement, divId, importo) {
     .concat("&sort_column=importo&sort_order=DESC")
     .concat("&per_page=200")
     .concat("&importo=").concat(importo);
-  
+
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
@@ -96,10 +97,10 @@ function grafici(btnElement, divId) {
   pie_charts(boostrap_col, divId);
 }
 
-
 function pie_charts(boostrap_col, divId) {
   var idConto = divId;
   var cumulatoAnno = parseFloat((document.getElementById("cumul_anno_".concat(idConto)).innerText).replace(/\./g,"").replace(',', '.'));
+
   var l = document.getElementById("livello").selectedIndex;
   var livello_top = parseInt(document.getElementById("livello").options[l].text);
   var livello_start = parseInt((document.getElementById("liv_conto_".concat(idConto)).innerText));
@@ -115,6 +116,7 @@ function block_donut(idConto, cumulatoAnno, divId, boostrap_col) {
   block_pie.setAttribute("id", "pie_chart_".concat(divId.replace(/\./g,"_")).concat(i));
   block_pie.setAttribute("class", "pie_box pull-left");
   boostrap_col.appendChild(block_pie);
+
   var donut_header = document.createElement("DIV");
   donut_header.setAttribute("class", "donut_text text-center");
   donut_header.style.maxWidth = "100px";
@@ -122,35 +124,39 @@ function block_donut(idConto, cumulatoAnno, divId, boostrap_col) {
   donut_header.appendChild(testo);
   block_pie.appendChild(donut_header);
 
-
   idConto = chomp(idConto, '.');
   var cumulatoAnnoSup = parseFloat((document.getElementById("cumul_anno_".concat(idConto)).innerText).replace(/\./g,"").replace(',', '.'));
   var perc1 = (cumulatoAnno * 100) / cumulatoAnnoSup;
   var perc2 = (100 - perc1).toFixed(2);
+
   var dataset = [
     {item:"", qty:perc1},
     {item:"", qty:perc2}
   ];
   var parameters = { selector: "#pie_chart_".concat(divId.replace(/\./g,"_")).concat(i), hole_text: percentageFormatEur(perc1), legend_width: 0 };
   donut(dataset, parameters);
+
   var donut_footer = document.createElement("DIV");
   donut_footer.setAttribute("class", "donut_text text-center");
   donut_footer.style.maxWidth = "100px";
   testo = document.createTextNode(document.getElementById("voce_".concat(idConto)).innerText);
   donut_footer.appendChild(testo);
   block_pie.appendChild(donut_footer);
-  return idConto;
 
+  return idConto;
+}
 
 function percentageFormatEur (num) {
   return num
         .toFixed(2) // always two decimal digits
         .replace(".", ",") // replace decimal point character with ,
 }
+
 function chomp(str, separator) {
   end = str.lastIndexOf(separator);
   return str.slice(0, end);
 }
+
 function currencyFormatEur (num) {
   return num
         .toFixed(2) // always two decimal digits
@@ -165,6 +171,7 @@ function tabulatedValues() {
 
   var tbody = document.createElement("TBODY");
   tabella.appendChild(tbody);
+
   for (i=0; i<4; i++) {
     var riga= document.createElement("TR");
     riga.setAttribute("id", "tr_".concat(i));
@@ -177,6 +184,7 @@ function tabulatedValues() {
       strong.appendChild(testo);
       cella.appendChild(strong);
       riga.appendChild(cella);
+
       cella = document.createElement("TD");
       cella.setAttribute("class", "text-right border-right");
       testo = document.createTextNode(currencyFormatEur(parseFloat(imp_mesi.getElementsByTagName("li")[i*3+j].innerHTML)));
@@ -186,3 +194,4 @@ function tabulatedValues() {
   }
   boostrap_col.appendChild(tabella);
 }
+*/
