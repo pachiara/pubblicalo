@@ -5,23 +5,23 @@
 
 @font-face {
    font-family: opensans;
-   src: url(/assets/OpenSans-Regular.ttf);
+   src: font-url('OpenSans-Regular.ttf');
 }
 @font-face {
    font-family: roboto;
-   src: url(/assets/Roboto-Regular.ttf);
+   src: font-url('Roboto-Regular.ttf');
 }
 
 @font-face {
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src: url(/assets/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: font-url('MaterialIcons-Regular.eot'); /* For IE6-8 */
   src: local('Material Icons'),
        local('MaterialIcons-Regular'),
-       url(/assets/MaterialIcons-Regular.woff2) format('woff2'),
-       url(/assets/MaterialIcons-Regular.woff) format('woff'),
-       url(/assets/MaterialIcons-Regular.ttf) format('truetype');
+       font-url('MaterialIcons-Regular.woff2') format('woff2'),
+       font-url('MaterialIcons-Regular.woff') format('woff'),
+       font-url('MaterialIcons-Regular.ttf') format('truetype');
 }
 
 .material-icons {
@@ -332,7 +332,7 @@ body {
 	padding-left: 0;
 }
 .menu_orizzontale .nav-tabs {
-	border: none; 
+	border: none;
 }
 .menu_orizzontale .nav-tabs > li > a:hover,
 .menu_orizzontale .nav-tabs > li > a:focus,
@@ -440,7 +440,7 @@ body {
 		font-size: small;
 	}
 }
- 
+
 /***************/
 /*** Tabella ***/
 /***************/
@@ -569,7 +569,7 @@ legend.lispa-form {
 	height: 2em;
 	display: block;
 	background: #999999;
-	top: -31px; 
+	top: -31px;
 	left: 43%;
 	margin-top: -15px;
 	margin-left: -15px;
@@ -793,7 +793,7 @@ color: #000000;
 /* Captcha */
 /***********/
 .input-recaptcha{
- width:172px;   
+ width:172px;
 }
 
 /********/
