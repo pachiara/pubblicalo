@@ -1,0 +1,31 @@
+#barra_istituzionale .logo {
+  top: 18px;
+}
+.well-lispa-dark {
+  border: none;
+  background-color: #003A60;
+  color: #ffffff;
+  box-shadow: none;
+}
+@media (min-width: 768px) {
+	#barra_istituzionale {
+		min-height: 45px;
+	}
+  #barra_istituzionale .area_titolo {
+    margin-top: 15px;
+  }
+  #barra_ricerca {
+    margin-top: 10px;
+  }
+}
+@media (min-width: 992px) {
+	#barra_istituzionale {
+		min-height: 95px;
+	}
+  #barra_istituzionale .area_titolo {
+    margin-top: 40px;
+  }
+}
+.nowrap {
+  white-space:nowrap
+}

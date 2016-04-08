@@ -1,0 +1,168 @@
+#barra_istituzionale .logo {
+  top: 18px;
+}
+.well-lispa-dark {
+  border: none;
+  background-color: #003A60;
+  color: #ffffff;
+  box-shadow: none;
+}
+/*
+@media (min-width: 768px) {
+	#barra_istituzionale {
+		min-height: 45px;
+	}
+  #barra_istituzionale .area_titolo {
+    margin-top: 15px;
+  }
+  #barra_ricerca {
+    margin-top: 10px;
+  }
+}
+*/
+@media (min-width: 768px) {
+	#barra_istituzionale {
+		min-height: 95px;
+	}
+  #barra_istituzionale .area_titolo {
+    margin-top: 40px;
+  }
+  #barra_ricerca {
+    margin-top: 10px;
+  }
+}
+
+.btn-sort_column {
+  background-color: white;
+  padding: 0;
+  border: 0;
+}
+.btn-sort_column .active {
+  color: orange;
+}
+.width_tight {
+  width: initial;
+}
+.width_max {
+  width: 100%;
+}
+.width_5_pc {
+  width: 5%;
+}
+.width_10_pc {
+  width: 10%;
+}
+.bg_lev_2 {
+  background-color: #E1F5FE;
+}
+.bg_lev_3 {
+  background-color: #C9EDFC;
+}
+.bg_lev_4 {
+  background-color: #B3E5FC;
+}
+.bg_lev_5 {
+  background-color: #9ADDFC;
+}
+
+.graphic_container {
+  margin-right: 0;
+}
+.graphic_container:hover {
+  background-color: #ffffff;
+}
+
+div .sub_table_container {
+  padding-left: 10px;
+}
+.sub_table_container .table {
+  margin-top: 20px;
+}
+.sub_table_container .table > thead > tr > th {
+  border: 0;
+  padding: 2px;
+}
+.sub_table_container .table > tbody > tr > td {
+  padding: 2px;
+}
+.sub_table_container .table.table-tight {
+  width: auto;
+}
+.sub_table_container .table.table-tight> tbody > tr > td {
+  padding: 5px;
+}
+
+/* bar_chart  */
+.bar1 {
+  fill: steelblue;
+}
+.bar2 {
+  fill: #003354;
+}
+
+
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+.bar_chart_legend {
+  font: 12px sans-serif;
+}
+
+
+.donut_text {
+  font: 12px sans-serif;
+}
+
+td .border-right {
+  border-right: 1px solid #ddd;
+}
+.pie_box {
+  margin: 5px;
+}
+
+
+
+.bar1:hover,
+.bar2:hover {
+  fill: orangered ;
+}
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}

@@ -1,0 +1,122 @@
+<%= render :partial => "layouts/pannello_ricerca" %>
+
+<div class="container-fluid">
+
+  <p id="notice"><%= notice %></p>
+  <div class="text-center"><span id="voce_<%= params[:tipo_conto] %>">Totale 
+    <% if params[:tipo_conto] == "U" %>Spese<% else %>Entrate<% end %> cumulate <%= params[:anno] %></span>: 
+    <strong><span id="cumul_anno_<%= params[:tipo_conto] %>"><%= number_to_currency(@total[0].importo) %></span></strong>
+  </div>
+  <table class="table table-hover">
+    <%= form_tag movements_path, :method => 'get', :class => 'form-group', :role => 'form' do %>
+      <thead>
+        <tr>
+          <th>
+            <%= button_tag(:class => "btn btn-sort_column", :type => 'submit', :name => 'sort_column', :value => 'conto') do  %>
+              Conto
+              <% if params[:sort_column] == 'conto' %>
+                <% if params[:sort_order] == 'DESC' %>
+                  <span class="glyphicon glyphicon-sort-by-attributes-alt active"></span>
+                <% else %>
+                  <span class="glyphicon glyphicon-sort-by-attributes active"></span>
+                <% end %>
+              <% else %>
+                <span class="glyphicon glyphicon-sort"></span>
+              <% end %>
+            <% end %>
+          </th>    
+          <th></th>
+          <th></th>
+          <th>Voce</th> 
+          <th class="text-right">
+            <%= button_tag(:class => "btn btn-sort_column", :type => 'submit', :name => 'sort_column', :value => 'importo') do  %>
+              Cumulato <%= params[:anno] %> 
+              <% if params[:sort_column] == 'importo' %>
+                <% if params[:sort_order] == 'DESC' %>
+                  <span class="glyphicon glyphicon-sort-by-attributes-alt active"></span>
+                <% else %>
+                  <span class="glyphicon glyphicon-sort-by-attributes active"></span>
+                <% end %>
+              <% else %>
+                <span class="glyphicon glyphicon-sort"></span>
+              <% end %>
+            <% end %>
+          </th> 
+          <th class="text-right">
+          % <%= (params[:anno].to_i - 1) %>
+          </th> 
+          <th class="text-right">
+            Totale <%= (params[:anno].to_i - 1) %> 
+          </th> 
+        </tr>
+      </thead>
+    <% end %>
+
+      <tbody>
+        <% @movements.each_with_index do |movement, index| %>
+          <tr>
+            <td class="width_10_pc"><%= movement.conto %></td>
+            <td class="width_10_pc" colspan="2">
+              <% if movement.livello < 5 %>
+                <div class="btn-group" role="group">
+                  <a class="btn btn-primary btn-xs" role="button" href="#<%= movement.id %>" aria-expanded="false"
+                  aria-controls="collapseExample" onclick="subAccounts(this, '<%= movement.idConto %>', '<%= movement.importo %>')"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
+              <% end %>
+              <% if movement.livello < 6 %>
+                  <a class="btn btn-primary btn-xs" role="button" href="#<%= movement.id %>" aria-expanded="false"
+                  aria-controls="collapseExample" onclick="grafici(this, '<%= movement.idConto %>')"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span></a>
+                </div>
+              <% end %>
+            </td>
+            <td id="voce_<%= movement.idConto %>"><%= movement.voce %></td>
+            <td id="cumul_anno_<%= movement.idConto %>" class="text-right text-nowrap width_10_pc""><%= number_to_currency(movement.importo) %></td>
+            <td class="text-right text-nowrap width_5_pc""><%= number_to_percentage(movement.perc_aa_prec) %></td>
+            <td class="text-right text-nowrap width_10_pc""><%= number_to_currency(movement.importo_prec) %></td>
+            <td class="hidden" id="liv_conto_<%= movement.idConto %>"><%= movement.livello %></td>
+            <td class="hidden">
+              <ul id="data_<%= movement.idConto %>">
+                <li><%= movement.importo_01 %></li>
+                <li><%= movement.importo_02 %></li>
+                <li><%= movement.importo_03 %></li>
+                <li><%= movement.importo_04 %></li>
+                <li><%= movement.importo_05 %></li>
+                <li><%= movement.importo_06 %></li>
+                <li><%= movement.importo_07 %></li>
+                <li><%= movement.importo_08 %></li>
+                <li><%= movement.importo_09 %></li>
+                <li><%= movement.importo_10 %></li>
+                <li><%= movement.importo_11 %></li>
+                <li><%= movement.importo_12 %></li>
+              </ul>
+            </td>
+            <td class="hidden">
+              <ul id="preced_<%= movement.idConto %>">
+                <li><%= movement.importo_01_prec.nil? ? 0 : movement.importo_01_prec %></li>
+                <li><%= movement.importo_02_prec.nil? ? 0 : movement.importo_02_prec %></li>
+                <li><%= movement.importo_03_prec.nil? ? 0 : movement.importo_03_prec %></li>
+                <li><%= movement.importo_04_prec.nil? ? 0 : movement.importo_04_prec %></li>
+                <li><%= movement.importo_05_prec.nil? ? 0 : movement.importo_05_prec %></li>
+                <li><%= movement.importo_06_prec.nil? ? 0 : movement.importo_06_prec %></li>
+                <li><%= movement.importo_07_prec.nil? ? 0 : movement.importo_07_prec %></li>
+                <li><%= movement.importo_08_prec.nil? ? 0 : movement.importo_08_prec %></li>
+                <li><%= movement.importo_09_prec.nil? ? 0 : movement.importo_09_prec %></li>
+                <li><%= movement.importo_10_prec.nil? ? 0 : movement.importo_10_prec %></li>
+                <li><%= movement.importo_11_prec.nil? ? 0 : movement.importo_11_prec %></li>
+                <li><%= movement.importo_12_prec.nil? ? 0 : movement.importo_12_prec %></li>
+              </ul>
+            </td>
+          </tr>
+          <% if movement.livello < 6 %>
+            <tr class="collapse" id="<%= movement.id %>">
+              <td colspan="7" class="bg_lev_<%= movement.livello + 2 - session[:movements_livello].to_i %>">
+                <span class="hidden"><%= movement.livello %></span>
+                <div id="<%= movement.idConto %>" class="sub_table_container"></div>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  
+</div>
+

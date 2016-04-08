@@ -1,0 +1,35 @@
+<a href="#salta_ricerca" class="sr-only sr-only-focusable">Salta pannello ricerca</a>
+<div id="barra_ricerca" class="well well-sm well-lispa-dark">
+  <%= form_tag movements_path, :method => 'get', :class => 'form-inline', :role => 'form' do %>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6"> 
+          <div class="form-group">
+            <%= select_tag "anno", options_for_select(((2014..@last_year).to_a.reverse), params[:anno]),
+            {class: 'select optional form-control', :onchange => "this.form.submit()"} %>
+          </div>
+          <div class="form-group">
+            <%= select_tag "tipo_conto", options_for_select([['Entrate', 'E'], ['Spese', 'U']], params[:tipo_conto]),
+              {class: 'select optional form-control', :onchange => "this.form.submit()"} %>
+          </div>    
+          <div class="form-group">
+            <%= label_tag "Livello:" %>
+            <%= select_tag "livello", options_for_select((1..5).to_a, params[:livello]),
+              {class: 'select optional form-control', :onchange => "this.form.submit()"} %>
+          </div>    
+        </div>
+        <div class="col-sm-6">
+          <div class="input-group width_max">
+            <%= text_field_tag :ricerca, params[:ricerca], :class => "form-control", :placeholder => "Spese per / Entrate da ...", :type => "search" %>
+            <span class="input-group-btn">
+              <%= button_tag(:class => "btn btn-default", :type => 'submit', :name => 'search', :value => 'cerca') do  %>
+                Cerca
+              <% end %>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<span id="salta_ricerca"></span>
