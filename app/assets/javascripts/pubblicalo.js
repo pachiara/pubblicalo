@@ -82,6 +82,7 @@ function grafici(btnElement, divId) {
 
   var boostrap_row = document.createElement("DIV");
   boostrap_row.setAttribute("class", "row graphic_container");
+  boostrap_row.setAttribute("aria-hidden", "true");
   divElement.appendChild(boostrap_row);
   var boostrap_col = document.createElement("DIV");
   boostrap_col.setAttribute("class", "col-sm-6 col-md-5");

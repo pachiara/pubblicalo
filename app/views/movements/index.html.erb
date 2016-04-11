@@ -1,6 +1,6 @@
 <%= render :partial => "layouts/pannello_ricerca" %>
 
-<div class="container-fluid">
+<div id="content" class="container-fluid">
 
   <p id="notice"><%= notice %></p>
   <div class="text-center"><span id="voce_<%= params[:tipo_conto] %>">Totale 
@@ -16,12 +16,15 @@
               Conto
               <% if params[:sort_column] == 'conto' %>
                 <% if params[:sort_order] == 'DESC' %>
-                  <span class="glyphicon glyphicon-sort-by-attributes-alt active"></span>
+                  <span class="glyphicon glyphicon-sort-by-attributes-alt active"
+                        title='ordinamento discendente'></span>
                 <% else %>
-                  <span class="glyphicon glyphicon-sort-by-attributes active"></span>
+                  <span class="glyphicon glyphicon-sort-by-attributes active"
+                        title='ordinamento ascendente'></span>
                 <% end %>
               <% else %>
-                <span class="glyphicon glyphicon-sort"></span>
+                <span class="glyphicon glyphicon-sort"
+                      title='clicca per ordinare per conto'></span>
               <% end %>
             <% end %>
           </th>    
@@ -33,12 +36,15 @@
               Cumulato <%= params[:anno] %> 
               <% if params[:sort_column] == 'importo' %>
                 <% if params[:sort_order] == 'DESC' %>
-                  <span class="glyphicon glyphicon-sort-by-attributes-alt active"></span>
+                  <span class="glyphicon glyphicon-sort-by-attributes-alt active"
+                        title='ordinamento discendente'></span>
                 <% else %>
-                  <span class="glyphicon glyphicon-sort-by-attributes active"></span>
+                  <span class="glyphicon glyphicon-sort-by-attributes active"
+                        title='ordinamento ascendente'></span>
                 <% end %>
               <% else %>
-                <span class="glyphicon glyphicon-sort"></span>
+                <span class="glyphicon glyphicon-sort"
+                      title='clicca per ordinare per importo'></span>
               <% end %>
             <% end %>
           </th> 
@@ -59,12 +65,12 @@
             <td class="width_10_pc" colspan="2">
               <% if movement.livello < 5 %>
                 <div class="btn-group" role="group">
-                  <a class="btn btn-primary btn-xs" role="button" href="#<%= movement.id %>" aria-expanded="false"
-                  aria-controls="collapseExample" onclick="subAccounts(this, '<%= movement.idConto %>', '<%= movement.importo %>')"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
+                  <a class="btn btn-primary btn-xs" role="button" href="#<%= movement.id %>" aria-expanded="false" aria-label="dettaglio"
+                  aria-controls="#<%= movement.id %>" onclick="subAccounts(this, '<%= movement.idConto %>', '<%= movement.importo %>')"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
               <% end %>
               <% if movement.livello < 6 %>
-                  <a class="btn btn-primary btn-xs" role="button" href="#<%= movement.id %>" aria-expanded="false"
-                  aria-controls="collapseExample" onclick="grafici(this, '<%= movement.idConto %>')"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span></a>
+                  <a class="btn btn-primary btn-xs" role="button" href="#<%= movement.id %>" aria-expanded="false" aria-label="grafici"
+                  aria-controls="#<%= movement.id %>" onclick="grafici(this, '<%= movement.idConto %>')"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span></a>
                 </div>
               <% end %>
             </td>
@@ -107,7 +113,7 @@
             </td>
           </tr>
           <% if movement.livello < 6 %>
-            <tr class="collapse" id="<%= movement.id %>">
+            <tr class="collapse" id="<%= movement.id %>" role="tabpanel">
               <td colspan="7" class="bg_lev_<%= movement.livello + 2 - session[:movements_livello].to_i %>">
                 <span class="hidden"><%= movement.livello %></span>
                 <div id="<%= movement.idConto %>" class="sub_table_container"></div>
