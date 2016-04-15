@@ -166,3 +166,6 @@ td .border-right {
   top: 100%;
   left: 0;
 }
+.sr-only {
+  font-size: 0.1em;
+}
