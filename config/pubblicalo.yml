@@ -1,13 +1,14 @@
 default: &default
+  version: "2.0"
 
 development:
   <<: *default
-  config.api_server_url = "http://localhost:4000/pubblicalo_api/api/v1"
+  api_server_url: "http://localhost:4000/pubblicalo_api/api/v1"
 
 test:
   <<: *default
-  config.api_server_url = "http://localhost:4000/pubblicalo_api/api/v1"
+  api_server_url: "http://localhost:4000/pubblicalo_api/api/v1"
 
 production:
   <<: *default
-  config.api_server_url = "http://localhost/pubblicalo_api/api/v1"
+  api_server_url: "http://localhost/pubblicalo_api/api/v1"
