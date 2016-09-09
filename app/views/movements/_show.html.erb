@@ -1,20 +1,20 @@
- <table class="table table-hover">
+ <table class="table table-hover" data-turbolinks="false">
       <thead class="bg_lev_<%= params[:livello].to_i + 1 - session[:movements_livello].to_i %>">
         <tr>
-          <th>Conto</th>    
+          <th>Conto</th>
           <th></th>
           <th></th>
-          <th>Voce</th> 
-          <th class="text-right">% su tot</th> 
+          <th>Voce</th>
+          <th class="text-right">% su tot</th>
           <th class="text-right text-nowrap">Cumulato <%= params[:anno] %>
             <span class="glyphicon glyphicon-sort-by-attributes-alt active"></span>
-          </th> 
+          </th>
           <th class="text-right">
             % <%= (params[:anno].to_i - 1) %>
-          </th> 
+          </th>
           <th class="text-right">
-              Totale <%= (params[:anno].to_i - 1) %> 
-          </th> 
+              Totale <%= (params[:anno].to_i - 1) %>
+          </th>
         </tr>
       </thead>
 
@@ -77,7 +77,7 @@
             <tr class="collapse tr_collapse" id="<%= movement.id %>" role="tabpanel">
               <td colspan="8" class="bg_lev_<%= movement.livello + 2 - session[:movements_livello].to_i %>">
                 <span class="hidden"><%= movement.livello %></span>
-                <div id="<%= movement.idConto %>" class="sub_table_container">                  
+                <div id="<%= movement.idConto %>" class="sub_table_container">
                 </div>
               </td>
             </tr>
