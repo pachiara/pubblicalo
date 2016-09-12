@@ -20,7 +20,7 @@ function bar_chart(selectId, divId) {
       .innerTickSize(-width)
       .outerTickSize(0)
       .ticks(8, "$,");
-      
+
   var d3_locale_itIT = d3.locale({
     decimal: ",",
     thousands: ".",
@@ -36,7 +36,7 @@ function bar_chart(selectId, divId) {
     shortMonths: [ "Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic" ]
   });
   d3.format = d3_locale_itIT.numberFormat;
-  
+
   var tip = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
@@ -49,7 +49,7 @@ function bar_chart(selectId, divId) {
   .html(function(d) {
     return "<span style='color:#fff'>" + currencyFormatEur(d.importo_prec) + "</span>";
   })
-    
+
   var svg = d3.select(selectId).append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
@@ -58,7 +58,7 @@ function bar_chart(selectId, divId) {
 
   svg.call(tip);
   svg.call(tip2);
-        
+
   var imp_mesi = document.getElementById("data_"+divId);
   var imp_mesi_prec = document.getElementById("preced_"+divId);
   var mesi = [ "Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic" ];
@@ -70,7 +70,7 @@ function bar_chart(selectId, divId) {
 
   x.domain(data.map(function(d) { return d.mese; }));
   y.domain([0, d3.max(data, function(d) { return d.importo; })]);
-  
+
   svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
@@ -81,7 +81,7 @@ function bar_chart(selectId, divId) {
       .call(yAxis);
 
   var bars = svg.selectAll(".bar").data(data).enter();
-  
+
   bars.append("rect")
       .attr("class", "bar1")
       .attr("x", function(d) { return x(d.mese); })
@@ -90,8 +90,8 @@ function bar_chart(selectId, divId) {
       .attr("height", function(d) { return height - y(d.importo); })
       .on('mouseover', tip.show)
       .on('mouseout', tip.hide);
-      
-        
+
+
   bars.append("rect")
       .attr("class", "bar2")
       .attr("x", function(d) { return x(d.mese) + x.rangeBand()/2; })
@@ -107,7 +107,7 @@ function bar_chart(selectId, divId) {
                      .attr("width", 10)
                      .attr("height", 10)
                      .attr("class", "bar1");
-                            
+
       rectangle = svg.append("rect")
                      .attr("x", width / 2)
                      .attr("y", height + 20)
@@ -118,19 +118,19 @@ function bar_chart(selectId, divId) {
   var i = document.getElementById("anno").selectedIndex;
   var anno = document.getElementById("anno").options[i].text;
   var anno_prec = parseInt(anno) - 1;
-                              
+
   svg.append("text")
      .attr("class", "bar_chart_legend")
      .style("fill", "black")
      .attr("x", width / 2 - 38)
-     .attr("y", height + 30) 
+     .attr("y", height + 30)
      .text(anno);
-      
+
   svg.append("text")
      .attr("class", "bar_chart_legend")
      .style("fill", "black")
      .attr("x", width / 2 + 12)
-     .attr("y", height + 30) 
+     .attr("y", height + 30)
      .text(anno_prec);
 
 }

@@ -36,9 +36,9 @@
             </td>
             <td id="voce_<%= movement.idConto %>"><%= movement.voce %></td>
             <td id="perc_su_tot_<%= movement.idConto %>" class="text-right text-nowrap width_5_pc"><%= number_to_percentage(movement.perc_su_tot(params[:importo])) %></td>
-            <td id="cumul_anno_<%= movement.idConto %>" class="text-right text-nowrap width_10_pc"><%= number_to_currency(movement.importo) %></td>
+            <td id="cumul_anno_<%= movement.idConto %>" class="text-right text-nowrap width_10_pc"><%= number_to_currency(movement.importo, locale: :it) %></td>
             <td class="text-right text-nowrap width_5_pc"><%= number_to_percentage(movement.perc_aa_prec) %></td>
-            <td class="text-right text-nowrap width_10_pc"><%= number_to_currency(movement.importo_prec) %></td>
+            <td class="text-right text-nowrap width_10_pc"><%= number_to_currency(movement.importo_prec, locale: :it) %></td>
             <td class="hidden" id="liv_conto_<%= movement.idConto %>"><%= movement.livello %></td>
             <td class="hidden">
               <ul id="data_<%= movement.idConto %>">

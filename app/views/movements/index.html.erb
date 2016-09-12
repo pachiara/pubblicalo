@@ -5,7 +5,7 @@
   <p id="notice"><%= notice %></p>
   <div class="text-center"><span id="voce_<%= params[:tipo_conto] %>">Totale
     <% if params[:tipo_conto] == "U" %>Spese<% else %>Entrate<% end %> cumulate <%= params[:anno] %></span>:
-    <strong><span id="cumul_anno_<%= params[:tipo_conto] %>"><%= number_to_currency(@total[0].importo) %></span></strong>
+    <strong><span id="cumul_anno_<%= params[:tipo_conto] %>"><%= number_to_currency(@total[0].importo, locale: :it) %></span></strong>
   </div>
   <table class="table table-hover">
     <%= form_tag movements_path, :method => 'get', :class => 'form-group', :role => 'form' do %>
@@ -75,9 +75,9 @@
               <% end %>
             </td>
             <td id="voce_<%= movement.idConto %>"><%= movement.voce %></td>
-            <td id="cumul_anno_<%= movement.idConto %>" class="text-right text-nowrap width_10_pc""><%= number_to_currency(movement.importo) %></td>
+            <td id="cumul_anno_<%= movement.idConto %>" class="text-right text-nowrap width_10_pc""><%= number_to_currency(movement.importo, locale: :it) %></td>
             <td class="text-right text-nowrap width_5_pc""><%= number_to_percentage(movement.perc_aa_prec) %></td>
-            <td class="text-right text-nowrap width_10_pc""><%= number_to_currency(movement.importo_prec) %></td>
+            <td class="text-right text-nowrap width_10_pc""><%= number_to_currency(movement.importo_prec, locale: :it) %></td>
             <td class="hidden" id="liv_conto_<%= movement.idConto %>"><%= movement.livello %></td>
             <td class="hidden">
               <ul id="data_<%= movement.idConto %>">
