@@ -48,5 +48,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'flexirest'
 gem 'bootstrap-sass'
 gem 'd3-rails'
-#gem 'oauth2'
-gem 'api-auth'
+gem 'oauth2'

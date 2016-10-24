@@ -2,7 +2,7 @@ class MovementsController < ApplicationController
   before_action :set_movement, only: [:show, :edit, :update, :destroy]
 
   def restore_filter
-    
+
     if params[:tipo_conto].nil? then
       if !session[:movements_tipo_conto].nil? then
         params[:tipo_conto] = session[:movements_tipo_conto]
@@ -12,9 +12,9 @@ class MovementsController < ApplicationController
     end
 
     @last_year = Time.now.year
-    if Movement.find_in_batches(anno: @last_year, conto: params[:tipo_conto]+".0.00.00.00.000").count == 0 then
-      @last_year = @last_year - 1
-    end
+#    if Movement.find(anno: @last_year, conto: params[:tipo_conto]+".0.00.00.00.000").count == 0 then
+#      @last_year = @last_year - 1
+#    end
 
     if params[:anno].nil? then
       if !session[:movements_anno].nil? then
@@ -24,7 +24,7 @@ class MovementsController < ApplicationController
       end
     end
 
-    if params[:livello].nil? then 
+    if params[:livello].nil? then
       if !session[:movements_livello].nil? then
         params[:livello] = session[:movements_livello]
       else
@@ -56,7 +56,7 @@ class MovementsController < ApplicationController
         params[:sort_order] = "ASC"
       end
     end
-    if params[:sort_order].nil?  
+    if params[:sort_order].nil?
       if !session[:movements_sort_order].nil? then
         params[:sort_order] = session[:movements_sort_order]
       else
@@ -65,16 +65,24 @@ class MovementsController < ApplicationController
     end
 
   end
-  
+
   # GET /movements
   # GET /movements.json
   def index
     restore_filter
-    
-    @total = Movement.find_in_batches(anno: params[:anno], conto: params[:tipo_conto]+".0.00.00.00.000")
-    @movements = Movement.find_in_batches(anno: params[:anno], tipo_conto: params[:tipo_conto], livello: params[:livello],
+    @total = Movement.find(anno: params[:anno], conto: params[:tipo_conto]+".0.00.00.00.000")
+    @movements = Movement.find(anno: params[:anno], tipo_conto: params[:tipo_conto], livello: params[:livello],
       ricerca: params[:ricerca], sort_column: params[:sort_column], sort_order: params[:sort_order], per_page: 200)
-    
+
+    session[:token] = Movement.token
+    puts session[:token]
+    puts Movement.token_expired?
+    puts "=========="
+    puts session[:token].expired?
+    puts session[:token].expires_at
+    puts "=========="
+
+
     session[:movements_anno] = params[:anno]
     session[:movements_tipo_conto] = params[:tipo_conto]
     session[:movements_livello] = params[:livello]
@@ -86,12 +94,12 @@ class MovementsController < ApplicationController
   # GET /movements/1
   # GET /movements/1.json
   def show
-    @movements = Movement.find_in_batches(conto: params[:conto], anno: params[:anno], tipo_conto: params[:tipo_conto], livello: params[:livello],
+    @movements = Movement.find(conto: params[:conto], anno: params[:anno], tipo_conto: params[:tipo_conto], livello: params[:livello],
                                           sort_column: params[:sort_column], sort_order: params[:sort_order])
     @cumulato_sup = params[:importo].to_f
     respond_to do |format|
       format.html
-      format.js 
+      format.js
     end
   end
 
@@ -143,12 +151,12 @@ class MovementsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_movement
-      @movement = Movement.find_in_batches(anno: params[:anno], tipo_conto: params[:tipo_conto], livello: params[:livello])
+      @movement = Movement.find(anno: params[:anno], tipo_conto: params[:tipo_conto], livello: params[:livello])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -156,4 +164,3 @@ class MovementsController < ApplicationController
       params.require(:movement).permit(:anno, :mese, :tipo_conto, :livello, :conto, :voce, :importo)
     end
 end
-

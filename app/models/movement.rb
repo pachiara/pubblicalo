@@ -1,10 +1,9 @@
 class Movement < Flexirest::Base
-  base_url         PUBBLICALO['base_url']
+  base_url       PUBBLICALO['base_url']
   before_request :api_authenticate
 
-  get :all, "/all.json"
-  get :find_in_batches, "/accounts.json"
-#  get :sublevel, "/accounts/"
+  get :all,  "/all"
+  get :find, "/accounts"
 
   def idConto
     case livello
@@ -35,26 +34,35 @@ class Movement < Flexirest::Base
     return ((importo.to_f * 100) / cumulato_sup.to_f).round(2)
   end
 
+class << self
+  def token
+    return @@token
+  end
+  def token_expired?
+    return @@token.expired? unless @@token.nil?
+  end
+end
+
   private
 
   def api_authenticate (name, request)
+    # rinnova token
+    # curl -k -d "grant_type=client_credentials" -H "Authorization: Basic Wm5VblU5b2g1NnhHMklZRVNfX0dld1R0aUFnYTo3VElBME1ySlRzcUhIVlQ4RnEwTElLOTRET2Nh" https://api.integrazione.lispa.it/oauth2/token
+    # esegue richiesta
+    # curl -X GET --header "Accept: application/json" --header "Authorization: Bearer 5d1cbfa83921f594213250b1a8b2a94d" "https://api.integrazione.lispa.it/t/servizi.rl/pubblica.lo/1.0/accounts"
+
     site_path      = PUBBLICALO['site_path']
     token_url      = PUBBLICALO['token_url']
     client_id      = PUBBLICALO['client_id']
     client_secret  = PUBBLICALO['client_secret']
 
-#    client = OAuth2::Client.new(client_id, client_secret, :site => site_path, :token_url => token_url)
-#    code   = client.client_credentials.authorization(client_id, client_secret)
-#    token  = client.get_token(:headers => {'Authorization' => code},
-#                              :content_type => 'application/x-www-form-urlencoded',
-#                              :grant_type => 'client_credentials')
-#    response = token.get(request.base_url+request.url, request.get_params)
+    client = OAuth2::Client.new(client_id, client_secret, :site => site_path, :token_url => token_url)
+    code   = client.client_credentials.authorization(client_id, client_secret)
+    @@token  = client.get_token(:headers => {'Authorization' => code},
+                              :content_type => 'application/x-www-form-urlencoded',
+                              :grant_type => 'client_credentials')
 
-
-    api_auth_credentials(client_id, client_secret, digest: "sha256")
-
-    secret_key = ApiAuth.generate_secret_key
-    head(:unauthorized) unless ApiAuth.authentic?(request, secret_key)
+    request.headers["Authorization"] = "Bearer "+@@token.token
   end
 
 end
