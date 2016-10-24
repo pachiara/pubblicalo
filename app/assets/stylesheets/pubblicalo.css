@@ -7,19 +7,6 @@
   color: #ffffff;
   box-shadow: none;
 }
-/*
-@media (min-width: 768px) {
-	#barra_istituzionale {
-		min-height: 45px;
-	}
-  #barra_istituzionale .area_titolo {
-    margin-top: 15px;
-  }
-  #barra_ricerca {
-    margin-top: 10px;
-  }
-}
-*/
 @media (min-width: 768px) {
 	#barra_istituzionale {
 		min-height: 95px;
@@ -31,14 +18,14 @@
     margin-top: 10px;
   }
 }
-
 .btn-sort_column {
   background-color: white;
   padding: 0;
   border: 0;
 }
 .btn-sort_column .active {
-  color: orange;
+#  color: orange;
+  color: green;
 }
 .width_tight {
   width: initial;
@@ -64,14 +51,12 @@
 .bg_lev_5 {
   background-color: #9ADDFC;
 }
-
 .graphic_container {
   margin-right: 0;
 }
 .graphic_container:hover {
   background-color: #ffffff;
 }
-
 div .sub_table_container {
   padding-left: 10px;
 }
@@ -91,7 +76,6 @@ div .sub_table_container {
 .sub_table_container .table.table-tight> tbody > tr > td {
   padding: 5px;
 }
-
 /* bar_chart  */
 .bar1 {
   fill: steelblue;
@@ -99,45 +83,34 @@ div .sub_table_container {
 .bar2 {
   fill: #003354;
 }
-
-
 .axis {
   font: 10px sans-serif;
 }
-
 .axis path,
 .axis line {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
 }
-
 .x.axis path {
   display: none;
 }
 .bar_chart_legend {
   font: 12px sans-serif;
 }
-
-
 .donut_text {
   font: 12px sans-serif;
 }
-
 td .border-right {
   border-right: 1px solid #ddd;
 }
 .pie_box {
   margin: 5px;
 }
-
-
-
 .bar1:hover,
 .bar2:hover {
   fill: orangered ;
 }
-
 .d3-tip {
   line-height: 1;
   font-weight: bold;
@@ -146,7 +119,6 @@ td .border-right {
   color: #fff;
   border-radius: 2px;
 }
-
 /* Creates a small triangle extender for the tooltip */
 .d3-tip:after {
   box-sizing: border-box;
@@ -159,7 +131,6 @@ td .border-right {
   position: absolute;
   text-align: center;
 }
-
 /* Style northward tooltips differently */
 .d3-tip.n:after {
   margin: -1px 0 0 0;
@@ -169,7 +140,6 @@ td .border-right {
 .sr-only {
   font-size: 0.1em;
 }
-
 .red {
   color: #8D0045;
 }
