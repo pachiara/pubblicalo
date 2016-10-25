@@ -40,7 +40,7 @@
             <td class="text-right text-nowrap width_5_pc">
               <% @perc = number_to_percentage(movement.perc_aa_prec, precision: 2, locale: :it) %>
               <%= @perc %>
-              <span class="<%= @perc.to_f > 0 ? 'glyphicon glyphicon-circle-arrow-up green' : 'glyphicon glyphicon-circle-arrow-down red' %>"
+              <span class="<%= @perc.to_f > 0 ? 'glyphicon glyphicon-circle-arrow-up orange' : 'glyphicon glyphicon-circle-arrow-down blue' %>"
                     aria-hidden="true"></span>
             </td>
             <td class="text-right text-nowrap width_10_pc"><%= number_to_currency(movement.importo_prec, locale: :it) %></td>

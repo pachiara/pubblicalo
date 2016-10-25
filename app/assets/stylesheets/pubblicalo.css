@@ -24,8 +24,7 @@
   border: 0;
 }
 .btn-sort_column .active {
-#  color: orange;
-  color: green;
+  color: #FF4500;
 }
 .width_tight {
   width: initial;
@@ -145,4 +144,10 @@ td .border-right {
 }
 .green {
   color: #348D45;
+}
+.orange {
+  color: #FF4500;
+}
+.blue {
+  color: #003A60;
 }
