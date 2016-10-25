@@ -53,9 +53,8 @@ class Movement < Flexirest::Base
     client_id      = PUBBLICALO['client_id']
     client_secret  = PUBBLICALO['client_secret']
 
-    client = OAuth2::Client.new(client_id, client_secret, :site => site_path, :token_url => token_url)
-
     if @@token.nil? || @@token.expired?
+      client = OAuth2::Client.new(client_id, client_secret, :site => site_path, :token_url => token_url)
       code    = client.client_credentials.authorization(client_id, client_secret)
       @@token = client.get_token(:headers => {'Authorization' => code},
                                  :content_type => 'application/x-www-form-urlencoded',
