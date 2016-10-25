@@ -1,4 +1,5 @@
 class Movement < Flexirest::Base
+  @@token = nil
   base_url       PUBBLICALO['base_url']
   before_request :api_authenticate
 
@@ -34,15 +35,6 @@ class Movement < Flexirest::Base
     return ((importo.to_f * 100) / cumulato_sup.to_f).round(2)
   end
 
-class << self
-  def token
-    return @@token
-  end
-  def token_expired?
-    return @@token.expired? unless @@token.nil?
-  end
-end
-
   private
 
   def api_authenticate (name, request)
@@ -51,18 +43,24 @@ end
     # esegue richiesta
     # curl -X GET --header "Accept: application/json" --header "Authorization: Bearer 5d1cbfa83921f594213250b1a8b2a94d" "https://api.integrazione.lispa.it/t/servizi.rl/pubblica.lo/1.0/accounts"
 
+    get_token
+    request.headers["Authorization"] = "Bearer "+@@token.token
+  end
+
+  def get_token
     site_path      = PUBBLICALO['site_path']
     token_url      = PUBBLICALO['token_url']
     client_id      = PUBBLICALO['client_id']
     client_secret  = PUBBLICALO['client_secret']
 
     client = OAuth2::Client.new(client_id, client_secret, :site => site_path, :token_url => token_url)
-    code   = client.client_credentials.authorization(client_id, client_secret)
-    @@token  = client.get_token(:headers => {'Authorization' => code},
-                              :content_type => 'application/x-www-form-urlencoded',
-                              :grant_type => 'client_credentials')
 
-    request.headers["Authorization"] = "Bearer "+@@token.token
+    if @@token.nil? || @@token.expired?
+      code    = client.client_credentials.authorization(client_id, client_secret)
+      @@token = client.get_token(:headers => {'Authorization' => code},
+                                 :content_type => 'application/x-www-form-urlencoded',
+                                 :grant_type => 'client_credentials')
+    end
   end
 
 end

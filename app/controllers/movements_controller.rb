@@ -74,15 +74,6 @@ class MovementsController < ApplicationController
     @movements = Movement.find(anno: params[:anno], tipo_conto: params[:tipo_conto], livello: params[:livello],
       ricerca: params[:ricerca], sort_column: params[:sort_column], sort_order: params[:sort_order], per_page: 200)
 
-    session[:token] = Movement.token
-    puts session[:token]
-    puts Movement.token_expired?
-    puts "=========="
-    puts session[:token].expired?
-    puts session[:token].expires_at
-    puts "=========="
-
-
     session[:movements_anno] = params[:anno]
     session[:movements_tipo_conto] = params[:tipo_conto]
     session[:movements_livello] = params[:livello]
