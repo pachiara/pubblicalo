@@ -12,7 +12,7 @@
       <thead>
         <tr>
           <th>
-            <%= button_tag(:class => "btn btn-sort_column", :type => 'submit', :name => 'sort_column', :value => 'conto') do  %>
+            <%= button_tag(:class => "btn btn-sort_column title", :type => 'submit', :name => 'sort_column', :value => 'conto') do  %>
               Conto
               <% if params[:sort_column] == 'conto' %>
                 <% if params[:sort_order] == 'DESC' %>
@@ -32,7 +32,7 @@
           <th></th>
           <th>Voce</th>
           <th class="text-right">
-            <%= button_tag(:class => "btn btn-sort_column", :type => 'submit', :name => 'sort_column', :value => 'importo') do  %>
+            <%= button_tag(:class => "btn btn-sort_column title", :type => 'submit', :name => 'sort_column', :value => 'importo') do  %>
               Cumulato <%= params[:anno] %>
               <% if params[:sort_column] == 'importo' %>
                 <% if params[:sort_order] == 'DESC' %>

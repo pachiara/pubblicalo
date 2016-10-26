@@ -151,3 +151,6 @@ td .border-right {
 .blue {
   color: #003A60;
 }
+.title {
+  font-size: inherit;
+}
