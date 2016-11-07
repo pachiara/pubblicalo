@@ -43,6 +43,7 @@ class Movement < Flexirest::Base
     # esegue richiesta
     # curl -X GET --header "Accept: application/json" --header "Authorization: Bearer 5d1cbfa83921f594213250b1a8b2a94d" "https://api.integrazione.lispa.it/t/servizi.rl/pubblica.lo/1.0/accounts"
 
+    return if PUBBLICALO['api_gw'] == "false"
     get_token
     request.headers["Authorization"] = "Bearer "+@@token.token
   end

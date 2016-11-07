@@ -3,22 +3,25 @@ default: &default
 
 development:
   <<: *default
-#  base_url: "http://localhost:4000/api/v1"
-  base_url:      "https://api.integrazione.lispa.it/t/servizi.rl/pubblica.lo/"
-  site_path:     "https://api.integrazione.lispa.it"
-  token_url:     "https://api.integrazione.lispa.it/oauth2/token"
+#  base_url:    "http://localhost:4000/api/v1"
+  api_gw:        "true"
+  base_url:      "https://api.pre.integrazione.lispa.it/t/servizi.rl/pubblica.lo/"
+  site_path:     "https://api.pre.integrazione.lispa.it"
+  token_url:     "https://api.pre.integrazione.lispa.it/oauth2/token"
   client_id:     "DdSHcF8utZ6j0sAkWxG5CaoOAqIa"
   client_secret: "X9RNpCbUAc8ElHYT6eVnRFRbnJsa"
 
 test:
   <<: *default
-  base_url: "http://localhost:4000/api/v1"
+  base_url:      "http://localhost:4000/api/v1"
+  api_gw:        "false"
 
 production:
   <<: *default
-#  base_url: "http://localhost/pubblicalo_api/api/v1"
-  base_url:      "https://api.integrazione.lispa.it/t/servizi.rl/pubblica.lo/"
-  site_path:     "https://api.integrazione.lispa.it"
-  token_url:     "https://api.integrazione.lispa.it/oauth2/token"
+#  base_url:    "http://localhost/pubblicalo_api/api/v1"
+  api_gw:        "true"
+  base_url:      "https://am.wso2.lispa.local/t/servizi.rl/pubblica.lo/"
+  site_path:     "https://am.wso2.lispa.local"
+  token_url:     "https://am.wso2.lispa.local/oauth2/token"
   client_id:     "DdSHcF8utZ6j0sAkWxG5CaoOAqIa"
   client_secret: "X9RNpCbUAc8ElHYT6eVnRFRbnJsa"
