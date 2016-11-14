@@ -8,12 +8,9 @@
   box-shadow: none;
 }
 @media (min-width: 768px) {
-	#barra_istituzionale {
-		min-height: 95px;
+  #barra_istituzionale .logo {
+		left: 5px;
 	}
-  #barra_istituzionale .area_titolo {
-    margin-top: 40px;
-  }
   #barra_ricerca {
     margin-top: 10px;
   }
@@ -60,7 +57,7 @@ div .sub_table_container {
   padding-left: 10px;
 }
 .sub_table_container .table {
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 .sub_table_container .table > thead > tr > th {
   border: 0;
@@ -153,4 +150,38 @@ td .border-right {
 }
 .title {
   font-size: inherit;
+}
+@media screen and (max-width: 1000px) {
+  .table > thead > tr > th,
+  .table > thead > tr > td,
+  .table > tbody > tr > th,
+  .table > tbody > tr > td,
+  .table > tfoot > tr > th,
+  .table > tfoot > tr > td {
+    padding-right: 2px;
+    padding-left: 2px;
+  }
+  .btn-group {
+    white-space: nowrap;
+    display: flex;
+    .btn {
+      float: none;
+      display: inline-block;
+      font-size: 12px;
+      line-height: 1.5;
+      border-radius: 3px;
+    }
+  }
+  div .sub_table_container {
+    padding-left: 2px;
+  }
+  .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@media (min-width: 992px) {
+	#barra_istituzionale .logo {
+		left: 10px;
+	}
 }

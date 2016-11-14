@@ -29,11 +29,10 @@
             <% end %>
           </th>
           <th></th>
-          <th></th>
           <th>Voce</th>
           <th class="text-right">
             <%= button_tag(:class => "btn btn-sort_column title", :type => 'submit', :name => 'sort_column', :value => 'importo') do  %>
-              Cumulato <%= params[:anno] %>
+              Cumulo <%= params[:anno] %>
               <% if params[:sort_column] == 'importo' %>
                 <% if params[:sort_order] == 'DESC' %>
                   <span class="glyphicon glyphicon-sort-by-attributes-alt active"
@@ -57,12 +56,11 @@
         </tr>
       </thead>
     <% end %>
-
       <tbody>
         <% @movements.each_with_index do |movement, index| %>
           <tr>
             <td class="width_10_pc"><%= movement.conto %></td>
-            <td class="width_10_pc" colspan="2">
+            <td class="width_10_pc">
               <div class="btn-group" role="group" data-turbolinks="false">
               <% if movement.livello < 5 %>
                   <a class="btn btn-primary btn-md" role="button" href="#<%= movement.id %>" aria-expanded="false" aria-label="dettaglio"
@@ -126,7 +124,6 @@
             </tr>
           <% end %>
         <% end %>
-      </tbody>
-    </table>
-
+    </tbody>
+  </table>
 </div>

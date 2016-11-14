@@ -3,10 +3,9 @@
         <tr>
           <th>Conto</th>
           <th></th>
-          <th></th>
           <th>Voce</th>
-          <th class="text-right">% su tot</th>
-          <th class="text-right text-nowrap">Cumulato <%= params[:anno] %>
+          <th class="text-right text-nowrap">% su tot</th>
+          <th class="text-right text-nowrap">Cumulo <%= params[:anno] %>
             <span class="glyphicon glyphicon-sort-by-attributes-alt active"></span>
           </th>
           <th class="text-right">
@@ -22,7 +21,7 @@
         <% @movements.each_with_index do |movement, index| %>
           <tr>
             <td class="width_10_pc"><%= movement.conto %></td>
-            <td class="width_10_pc" colspan="2">
+            <td class="width_10_pc">
               <% if movement.livello < 5 %>
                 <div class="btn-group" role="group">
                   <a class="btn btn-primary btn-md" role="button" href="#<%= movement.id %>" aria-expanded="false"
