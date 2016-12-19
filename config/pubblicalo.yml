@@ -5,11 +5,12 @@ development:
   <<: *default
   base_url:      "http://localhost:4000/api/v1"
   api_gw:        "false"
-#  base_url:      "https://api.pre.integrazione.lispa.it/t/servizi.rl/pubblica.lo/"
-#  site_path:     "https://api.pre.integrazione.lispa.it"
-#  token_url:     "https://api.pre.integrazione.lispa.it/oauth2/token"
-#  client_id:     "DdSHcF8utZ6j0sAkWxG5CaoOAqIa"
-#  client_secret: "X9RNpCbUAc8ElHYT6eVnRFRbnJsa"
+#  base_url:      "https://api.integrazione.lispa.it/t/servizi.rl/pubblica.lo/"
+#  site_path:     "https://api.integrazione.lispa.it"
+#  token_url:     "https://api.integrazione.lispa.it/oauth2/token"
+   # key per lab
+#  client_id:     "JklDnFEDGwOyyYhPREkdZBOwYfoa"
+#  client_secret: "S86l8IoKqCfDxw4UwFh5gL9eNLca"
 
 test:
   <<: *default
@@ -23,5 +24,6 @@ production:
   base_url:      "https://am.wso2.lispa.local/t/servizi.rl/pubblica.lo/"
   site_path:     "https://am.wso2.lispa.local"
   token_url:     "https://am.wso2.lispa.local/oauth2/token"
-  client_id:     "DdSHcF8utZ6j0sAkWxG5CaoOAqIa"
-  client_secret: "X9RNpCbUAc8ElHYT6eVnRFRbnJsa"
+  # key per pre-it
+  client_id:     "QDkHHPvz294F3e8GrbOGn64Fmmca"
+  client_secret: "7bfzVCKcnlVVNprBQVGAw4iDo8ka"
