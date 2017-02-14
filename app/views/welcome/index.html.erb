@@ -1,0 +1,23 @@
+<div class="area_utente">
+  <div class="container-fluid">
+  	<span class="nome_utente">
+  		<span class="glyphicon glyphicon-home white" role="presentation"></span>
+  		Trasparenza dei conti della Regione Lombardia
+  	</span>
+  </div>
+</div>
+
+<div class="home">
+  <div class="well">
+    <p class="h4">Questo sito permette di interrogare tutti i pagamenti e le entrate catalogate secondo il piano dei conti delle pubbliche amministrazioni (nuovo SIOPE).</p>
+    <p class="h4">Le informazioni sono estratte direttamente dal sistema contabile dell'amministrazione e vengono pubblicate con una frequenza giornaliera.</p>
+    <p class="h4">La rappresentazione ricalca i 5 livelli di gerarchia che compongono il piano dei conti, partendo dal raggruppamento piu' alto (1) fino a quello di maggiore dettaglio (5).</p>
+    <p class="h4">La ricerca si basa sul livello dei conti selezionato.</p>
+    <br/>
+    <p class="center">
+    <%= link_to movements_path, :class => "btn btn-primary btn-lg" do %>
+       Entra <span class="glyphicon glyphicon-arrow-right"></span>
+    <% end %>
+    </p>
+  </div>
+</div>
