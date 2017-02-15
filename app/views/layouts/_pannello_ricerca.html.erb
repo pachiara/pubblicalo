@@ -3,7 +3,7 @@
   <%= form_tag movements_path, :method => 'get', :class => 'form-inline', :role => 'form' do %>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-6"> 
+        <div class="col-sm-6">
           <div class="form-group">
             <%= label_tag 'anno', 'anno', {class: 'sr-only'} %>
             <%= select_tag "anno", options_for_select(((2014..@last_year).to_a.reverse), params[:anno]),
@@ -13,12 +13,12 @@
             <%= label_tag 'tipo_conto', 'tipo conto', {class: 'sr-only'} %>
             <%= select_tag "tipo_conto", options_for_select([['Entrate', 'E'], ['Spese', 'U']], params[:tipo_conto]),
               {class: 'select optional form-control', :onchange => "this.form.submit()"} %>
-          </div>    
+          </div>
           <div class="form-group">
             <%= label_tag 'livello', 'Livello:' %>
-            <%= select_tag "livello", options_for_select((1..5).to_a, params[:livello]),
+            <%= select_tag "livello", options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['Tutti', '']], params[:livello]), 
               {class: 'select optional form-control', :onchange => "this.form.submit()"} %>
-          </div>    
+          </div>
         </div>
         <div class="col-sm-6">
           <div class="input-group width_max">

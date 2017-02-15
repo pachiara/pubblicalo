@@ -60,7 +60,26 @@
       <tbody>
         <% @movements.each_with_index do |movement, index| %>
           <tr>
-            <td class="width_10_pc"><%= movement.conto %></td>
+            <td class="width_10_pc">
+              <% if params[:livello].blank? %>
+                <% case movement.livello %>
+                <% when 0 %>
+                  <div><%= movement.conto %></div>
+                <% when 1 %>
+                  <div><span class="label label-success">1</span>&nbsp;<%= movement.conto %></div>
+                <% when 2 %>
+                  <div><span class="label blank">&nbsp;</span><span class="label label-success">2</span>&nbsp;<%= movement.conto %></div>
+                <% when 3 %>
+                  <div><span class="label blank">&nbsp;</span><span class="label blank">&nbsp;</span><span class="label label-success">3</span>&nbsp;<%= movement.conto %></div>
+                <% when 4 %>
+                  <div><span class="label blank">&nbsp;</span><span class="label blank">&nbsp;</span><span class="label blank">&nbsp;</span><span class="label label-success">4</span>&nbsp;<%= movement.conto %></div>
+                <% when 5 %>
+                  <div><span class="label blank">&nbsp;</span><span class="label blank">&nbsp;</span><span class="label blank">&nbsp;</span><span class="label blank">&nbsp;</span><span class="label label-success">5</span>&nbsp;<%= movement.conto %></div>
+                <% end %>
+              <% else %>
+                <%= movement.conto %>
+              <% end %>
+            </td>
             <td class="width_10_pc">
               <div class="btn-group" role="group" data-turbolinks="false">
               <% if movement.livello < 5 %>
