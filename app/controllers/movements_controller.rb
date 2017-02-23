@@ -71,6 +71,7 @@ class MovementsController < ApplicationController
   def index
     restore_filter
     @total = Movement.find(anno: params[:anno], conto: params[:tipo_conto]+".0.00.00.00.000")
+    if params[:livello] == '0' then params[:livello] = '' end
     @movements = Movement.find(anno: params[:anno], tipo_conto: params[:tipo_conto], livello: params[:livello],
       ricerca: params[:ricerca], sort_column: params[:sort_column], sort_order: params[:sort_order], per_page: 200)
 

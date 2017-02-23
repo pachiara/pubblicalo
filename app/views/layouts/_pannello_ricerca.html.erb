@@ -15,9 +15,18 @@
               {class: 'select optional form-control', :onchange => "this.form.submit()"} %>
           </div>
           <div class="form-group">
-            <%= label_tag 'livello', 'Livello:' %>
-            <%= select_tag "livello", options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['Tutti', '']], params[:livello]), 
-              {class: 'select optional form-control', :onchange => "this.form.submit()"} %>
+            <%= label_tag 'livello', 'Livello:' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <%= text_field_tag 'livello', params[:livello], type: 'text',
+            "data-provide" => 'slider',
+            "data-slider-ticks" => '[0, 1, 2, 3, 4, 5]',
+            "data-slider-ticks-labels" => '["Tutti","1", "2", "3", "4", "5"]',
+            "data-slider-min" => '0',
+            "data-slider-max" => '5',
+            "data-slider-step" => '1',
+            "data-slider-value" => params[:livello],
+            "data-slider-tooltip" => 'hide',
+            onchange: 'this.form.submit()'
+            %>
           </div>
         </div>
         <div class="col-sm-6">
