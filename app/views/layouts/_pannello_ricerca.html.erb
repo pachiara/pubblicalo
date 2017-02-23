@@ -28,9 +28,23 @@
             onchange: 'this.form.submit()'
             %>
           </div>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a class="btn btn-default btn-lg" id="link_arconet" data-toggle="tooltip" data-placement="top"
+             title="Link al piano dei conti integrato unico e obbligatorio per tutte le amministrazioni pubbliche."
+             href="http://www.rgs.mef.gov.it/VERSIONE-I/e-GOVERNME1/ARCONET/PianodeiContiIntegrato/"
+             aria-label="link al sito Arconet" role="button">
+             <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
+          </a>
         </div>
         <div class="col-sm-6">
-          <div class="input-group width_max">
+          <div class="input-group input-group-lg width_max">
+            <span class="input-group-addon" id="sizing-addon1" data-toggle= "tooltip"  data-placement= "top"
+                  title="La ricerca è collegata col livello del piano dei conti selezionato.
+                         Selezionando 'Tutti' senza una parola di ricerca vengono visualizzati tutti i livelli del
+                         piano dei conti valorizzati.
+                  ">
+              <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            </span>
             <%= label_tag 'ricerca', 'ricerca', {class: 'sr-only'} %>
             <%= text_field_tag :ricerca, params[:ricerca], :class => "form-control", :placeholder => "Spese per / Entrate da ...", :type => "search" %>
             <span class="input-group-btn">
@@ -45,3 +59,8 @@
   <% end %>
 </div>
 <span id="salta_ricerca"></span>
+<script>
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
