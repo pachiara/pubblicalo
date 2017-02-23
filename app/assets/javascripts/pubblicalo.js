@@ -91,7 +91,7 @@ function grafici(btnElement, divId) {
   boostrap_row.appendChild(boostrap_col);
 
   bar_chart(boostrap_col, divId);
-  
+
   boostrap_col = document.createElement("DIV");
   boostrap_col.setAttribute("id", "pie_charts_".concat(divId.replace(/\./g,"_")));
   boostrap_col.setAttribute("class", "col-sm-6 col-md-7");
@@ -102,7 +102,7 @@ function grafici(btnElement, divId) {
   boostrap_col.appendChild(span);
   var testo = document.createTextNode("Dimensioni in percentuale della voce rispetto ai livelli superiori");
   span.appendChild(testo);
- 
+
   pie_charts(boostrap_col, divId);
 }
 
@@ -129,7 +129,7 @@ function block_donut(idConto, cumulatoAnno, divId, boostrap_col) {
   var donut_header = document.createElement("DIV");
   donut_header.setAttribute("class", "donut_text text-center");
   donut_header.style.maxWidth = "100px";
-  
+
   idConto = chomp(idConto, '.');
   var cumulatoAnnoSup = parseFloat((document.getElementById("cumul_anno_".concat(idConto)).innerText).replace(/\./g,"").replace(',', '.'));
   var perc1 = (cumulatoAnno * 100) / cumulatoAnnoSup;
@@ -140,7 +140,7 @@ function block_donut(idConto, cumulatoAnno, divId, boostrap_col) {
   donut_header.appendChild(span);
   var testo = document.createTextNode(percentageFormatEur(perc1));
   span.appendChild(testo);
-  
+
   testo = document.createTextNode("% sul totale di:");
   donut_header.appendChild(testo);
   block_pie.appendChild(donut_header);
@@ -149,7 +149,7 @@ function block_donut(idConto, cumulatoAnno, divId, boostrap_col) {
   donut_container.setAttribute("id", "donut_".concat(divId.replace(/\./g,"_")).concat(i));
   donut_container.setAttribute("aria-hidden", "true");
   block_pie.appendChild(donut_container);
-  
+
   var dataset = [
     {item:"", qty:perc1},
     {item:"", qty:perc2}
@@ -189,7 +189,7 @@ function currencyFormatEur (num) {
 function tabulatedValues(boostrap_col, divId) {
   var tabella = document.createElement("TABLE");
   tabella.setAttribute("id", "table_"+divId);
-  tabella.setAttribute("class", "sr-only sr-only-focusable"); 
+  tabella.setAttribute("class", "sr-only sr-only-focusable");
 
   var i = document.getElementById("anno").selectedIndex;
   var anno = document.getElementById("anno").options[i].text;
@@ -198,15 +198,15 @@ function tabulatedValues(boostrap_col, divId) {
   var mesi = [ "Gennaio", "Febraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre" ];
   var imp_mesi = document.getElementById("data_"+divId);
   var imp_mesi_prec = document.getElementById("preced_"+divId);
-  
+
   var caption = document.createElement("CAPTION");
   tabella.appendChild(caption);
   var testo = document.createTextNode("Confronto anno corrente con anno precedente, mese per mese.");
   caption.appendChild(testo);
-  
+
   var thead = document.createElement("THEAD");
   tabella.appendChild(thead);
-  
+
   var riga= document.createElement("TR");
   riga.setAttribute("id", "tr_".concat(i));
   thead.appendChild(riga);
@@ -215,7 +215,7 @@ function tabulatedValues(boostrap_col, divId) {
   testo = document.createTextNode("mese");
   cella.appendChild(testo);
   riga.appendChild(cella);
-  
+
   cella = document.createElement("TH");
   testo = document.createTextNode(anno);
   cella.appendChild(testo);
@@ -228,7 +228,7 @@ function tabulatedValues(boostrap_col, divId) {
 
   var tbody = document.createElement("TBODY");
   tabella.appendChild(tbody);
-  
+
   for (i=0; i<12; i++) {
     var riga= document.createElement("TR");
     riga.setAttribute("id", "tr_".concat(i));
@@ -251,3 +251,7 @@ function tabulatedValues(boostrap_col, divId) {
   }
   boostrap_col.appendChild(tabella);
 }
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})

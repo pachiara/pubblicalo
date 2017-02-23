@@ -22,16 +22,20 @@
           <tr>
             <td class="width_10_pc"><%= movement.conto %></td>
             <td class="width_10_pc">
-              <% if movement.livello < 5 %>
-                <div class="btn-group" role="group">
+              <div class="btn-group" role="group" data-turbolinks="false">
+                <% if movement.livello < 5 %>
                   <a class="btn btn-primary btn-md" role="button" href="#<%= movement.id %>" aria-expanded="false"
-                  aria-controls="#<%= movement.id %>" onclick="subAccounts(this, '<%= movement.idConto %>', '<%= movement.importo %>')"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
-              <% end %>
-              <% if movement.livello < 6 %>
+                     id="btn_movement1" data-toggle="tooltip" data-placement="top"
+                     title="Livello inferiore del conto"
+                     aria-controls="#<%= movement.id %>" onclick="subAccounts(this, '<%= movement.idConto %>', '<%= movement.importo %>')"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
+                <% end %>
+                <% if movement.livello < 6 %>
                   <a class="btn btn-primary btn-md" role="button" href="#<%= movement.id %>" aria-expanded="false"
-                  aria-controls="#<%= movement.id %>" onclick="grafici(this, '<%= movement.idConto %>')"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span></a>
-                </div>
-              <% end %>
+                     id="btn_grafico1" data-toggle="tooltip" data-placement="top"
+                     title="Grafico"
+                     aria-controls="#<%= movement.id %>" onclick="grafici(this, '<%= movement.idConto %>')"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span></a>
+                <% end %>
+              </div>
             </td>
             <td id="voce_<%= movement.idConto %>"><%= movement.voce %></td>
             <td id="perc_su_tot_<%= movement.idConto %>" class="text-right text-nowrap width_5_pc"><%= number_to_percentage(movement.perc_su_tot(params[:importo]), precision: 2, locale: :it) %></td>
