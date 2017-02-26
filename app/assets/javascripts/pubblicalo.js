@@ -251,7 +251,3 @@ function tabulatedValues(boostrap_col, divId) {
   }
   boostrap_col.appendChild(tabella);
 }
-
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})

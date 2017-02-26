@@ -24,15 +24,15 @@
             <td class="width_10_pc">
               <div class="btn-group" role="group" data-turbolinks="false">
                 <% if movement.livello < 5 %>
-                  <a class="btn btn-primary btn-md" role="button" href="#<%= movement.id %>" aria-expanded="false"
-                     id="btn_movement1" data-toggle="tooltip" data-placement="top"
-                     title="Livello inferiore del conto"
+                     <a class="btn btn-primary btn-md" role="button" href="#<%= movement.id %>" aria-expanded="false"
+                     id="btn_movement<%= movement.id %>" data-toggle="tooltip" data-placement="top"
+                     title="Livello inferiore del conto" onmouseover="$('#btn_movement<%= movement.id %>').tooltip('show')"
                      aria-controls="#<%= movement.id %>" onclick="subAccounts(this, '<%= movement.idConto %>', '<%= movement.importo %>')"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
                 <% end %>
                 <% if movement.livello < 6 %>
                   <a class="btn btn-primary btn-md" role="button" href="#<%= movement.id %>" aria-expanded="false"
-                     id="btn_grafico1" data-toggle="tooltip" data-placement="top"
-                     title="Grafico"
+                     id="btn_grafico<%= movement.id %>" data-toggle="tooltip" data-placement="top"
+                     title="Grafico" onmouseover="$('#btn_grafico<%= movement.id %>').tooltip('show')"
                      aria-controls="#<%= movement.id %>" onclick="grafici(this, '<%= movement.idConto %>')"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span></a>
                 <% end %>
               </div>
