@@ -17,7 +17,8 @@ function switchOffSort() {
 
 function getSelected(selectId) {
   var sel = document.getElementById(selectId);
-  return sel.options[sel.selectedIndex].value;
+//  return sel.options[sel.selectedIndex].value;
+  return sel.value;
 }
 
 function subAccounts(btnElement, divId, importo) {
@@ -110,8 +111,9 @@ function pie_charts(boostrap_col, divId) {
   var idConto = divId;
   var cumulatoAnno = parseFloat((document.getElementById("cumul_anno_".concat(idConto)).innerText).replace(/\./g,"").replace(',', '.'));
 
-  var l = document.getElementById("livello").selectedIndex;
-  var livello_top = parseInt(document.getElementById("livello").options[l].text);
+//  var l = document.getElementById("livello").selectedIndex;
+//  var livello_top = parseInt(document.getElementById("livello").options[l].text);
+  var livello_top = parseInt(document.getElementById("livello").value);
   var livello_start = parseInt((document.getElementById("liv_conto_".concat(idConto)).innerText));
   for (i=livello_start; i>livello_top; i--) {
     idConto = block_donut(idConto, cumulatoAnno, divId, boostrap_col);

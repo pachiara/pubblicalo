@@ -3,7 +3,7 @@
   <%= form_tag movements_path, :method => 'get', :class => 'form-inline', :role => 'form' do %>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-7">
           <div class="form-group">
             <%= label_tag 'anno', 'anno', {class: 'sr-only'} %>
             <%= select_tag "anno", options_for_select(((2014..@last_year).to_a.reverse), params[:anno]),
@@ -11,8 +11,16 @@
           </div>
           <div class="form-group">
             <%= label_tag 'tipo_conto', 'tipo conto', {class: 'sr-only'} %>
-            <%= select_tag "tipo_conto", options_for_select([['Entrate', 'E'], ['Spese', 'U']], params[:tipo_conto]),
-              {class: 'select optional form-control', :onchange => "this.form.submit()"} %>
+
+            <%= check_box_tag "tipo_conto", params[:tipo_conto],
+                if params[:tipo_conto]=="U" then true else false end,
+                data: {:toggle => "toggle",
+                       :on => "Spese",
+                       :off => "Entrate",
+                       :onstyle => "success",
+                       :offstyle => "info"}
+            %>
+
           </div>
           <div class="form-group">
             <%= label_tag 'livello', 'Livello:' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -28,16 +36,9 @@
             onchange: 'this.form.submit()'
             %>
           </div>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <a class="btn btn-default btn-lg" id="link_arconet" data-toggle="tooltip" data-placement="top"
-             title="Link al piano dei conti integrato unico e obbligatorio per tutte le amministrazioni pubbliche."
-             href="http://www.rgs.mef.gov.it/VERSIONE-I/e-GOVERNME1/ARCONET/PianodeiContiIntegrato/"
-             aria-label="link al sito Arconet" role="button">
-             <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
-          </a>
         </div>
-        <div class="col-sm-6">
-          <div class="input-group input-group-lg width_max">
+        <div class="col-sm-5">
+          <div class="input-group input-group-lg">
             <span class="input-group-addon" id="sizing-addon1" data-toggle= "tooltip"  data-placement= "top"
                   title="La ricerca è collegata col livello del piano dei conti selezionato.
                          Selezionando 'Tutti' senza una parola di ricerca vengono visualizzati tutti i livelli del
@@ -53,6 +54,13 @@
               <% end %>
             </span>
           </div>
+
+          <a class="btn btn-default btn-lg" id="link_arconet" data-toggle="tooltip" data-placement="top"
+             title="Link al piano dei conti integrato unico e obbligatorio per tutte le amministrazioni pubbliche."
+             href="http://www.rgs.mef.gov.it/VERSIONE-I/e-GOVERNME1/ARCONET/PianodeiContiIntegrato/"
+             aria-label="link al sito Arconet" role="button">
+             <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
+          </a>
         </div>
       </div>
     </div>
@@ -61,6 +69,18 @@
 <span id="salta_ricerca"></span>
 <script>
 $(function () {
+  $("input.slider").bootstrapSlider();
   $('[data-toggle="tooltip"]').tooltip()
+  $('#tipo_conto').bootstrapToggle();
 })
+$("#tipo_conto").change(function() {
+  if($(this).prop("checked") == true) {
+    $(this).val('U');
+  //  alert($(this).val());
+  } else {
+    $(this).val('E');
+  //  alert($(this).val());
+  }
+  this.form.submit();
+});
 </script>

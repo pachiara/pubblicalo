@@ -12,3 +12,4 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( lomb_ver.css )
 Rails.application.config.assets.precompile += %w( pubblicalo.css )
 Rails.application.config.assets.precompile += %w( bootstrap-slider.css )
+Rails.application.config.assets.precompile += %w( bootstrap-toggle.css )

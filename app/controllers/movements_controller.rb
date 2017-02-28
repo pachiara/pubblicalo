@@ -2,14 +2,17 @@ class MovementsController < ApplicationController
   before_action :set_movement, only: [:show, :edit, :update, :destroy]
 
   def restore_filter
-
     if params[:tipo_conto].nil? then
-      if !session[:movements_tipo_conto].nil? then
-        params[:tipo_conto] = session[:movements_tipo_conto]
-      else
-        params[:tipo_conto] = "U"
-      end
+      params[:tipo_conto] = "E"
+    else
+      params[:tipo_conto] = "U"
     end
+
+#      if !session[:movements_tipo_conto].nil? then
+#        params[:tipo_conto] = session[:movements_tipo_conto]
+#      else
+#        params[:tipo_conto] = "U"
+#      end
 
     @last_year = Time.now.year
 #    if Movement.find(anno: @last_year, conto: params[:tipo_conto]+".0.00.00.00.000").count == 0 then
