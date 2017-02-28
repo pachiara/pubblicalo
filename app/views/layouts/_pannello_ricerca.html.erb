@@ -67,20 +67,3 @@
   <% end %>
 </div>
 <span id="salta_ricerca"></span>
-<script>
-$(function () {
-  $("input.slider").bootstrapSlider();
-  $('[data-toggle="tooltip"]').tooltip()
-  $('#tipo_conto').bootstrapToggle();
-})
-$("#tipo_conto").change(function() {
-  if($(this).prop("checked") == true) {
-    $(this).val('U');
-  //  alert($(this).val());
-  } else {
-    $(this).val('E');
-  //  alert($(this).val());
-  }
-  this.form.submit();
-});
-</script>

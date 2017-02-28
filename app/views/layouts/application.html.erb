@@ -27,6 +27,23 @@
 </head>
 <body>
    <%= render :partial => "layouts/barra_istituzionale" %>
-<%= yield %>
-   <%= render :partial => "layouts/footer" %></body>
+   <%= yield %>
+   <%= render :partial => "layouts/footer" %>
+   <script>
+   $(function () {
+     $("input.slider").bootstrapSlider();
+     $('#livello').slider();
+     $('[data-toggle="tooltip"]').tooltip()
+     $('#tipo_conto').bootstrapToggle();
+   })
+   $("#tipo_conto").change(function() {
+     if($(this).prop("checked") == true) {
+       $(this).val('U');
+     } else {
+       $(this).val('E');
+     }
+     this.form.submit();
+   });
+   </script>
+ </body>
 </html>
