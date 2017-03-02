@@ -57,6 +57,12 @@
              aria-label="link al sito Arconet" role="button">
              <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
           </a>
+          <%= link_to movements_path(format: "xls"), class: "btn btn-default btn-lg",
+              title: "Scarica la tua interrogazione in formato foglio di calcolo.",
+              role: "button",
+              data: { :toggle => "tooltip", :placement => "top" } do %>
+                <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+          <% end %>
         </div>
       </div>
     </div>

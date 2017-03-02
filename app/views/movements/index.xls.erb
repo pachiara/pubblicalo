@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Anno</Data></Cell>
+        <Cell><Data ss:Type="String">Tipo Conto</Data></Cell>
+        <Cell><Data ss:Type="String">Livello</Data></Cell>
+        <Cell><Data ss:Type="String">Conto</Data></Cell>
+        <Cell><Data ss:Type="String">Descrizione</Data></Cell>
+        <Cell><Data ss:Type="String">Importo Anno</Data></Cell>
+        <Cell><Data ss:Type="String">Gennnaio</Data></Cell>
+        <Cell><Data ss:Type="String">Febbraio</Data></Cell>
+        <Cell><Data ss:Type="String">Marzo</Data></Cell>
+        <Cell><Data ss:Type="String">Aprile</Data></Cell>
+        <Cell><Data ss:Type="String">Maggio</Data></Cell>
+        <Cell><Data ss:Type="String">Giugno</Data></Cell>
+        <Cell><Data ss:Type="String">Luglio</Data></Cell>
+        <Cell><Data ss:Type="String">Agosto</Data></Cell>
+        <Cell><Data ss:Type="String">Settembre</Data></Cell>
+        <Cell><Data ss:Type="String">Ottobre</Data></Cell>
+        <Cell><Data ss:Type="String">Novembre</Data></Cell>
+        <Cell><Data ss:Type="String">Dicembre</Data></Cell>
+      </Row>
+    <% @movements.each do |movement| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= movement.anno %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= movement.tipo_conto %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= movement.livello %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= movement.conto %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= movement.voce %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= movement.importo %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= movement.importo_01 %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= movement.importo_02 %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= movement.importo_03 %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= movement.importo_04 %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= movement.importo_05 %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= movement.importo_06 %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= movement.importo_07 %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= movement.importo_08 %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= movement.importo_09 %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= movement.importo_10 %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= movement.importo_11 %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= movement.importo_12 %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

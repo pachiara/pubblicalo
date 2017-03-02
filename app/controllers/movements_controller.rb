@@ -7,6 +7,9 @@ class MovementsController < ApplicationController
     else
       params[:tipo_conto] = "U"
     end
+    if !session[:movements_tipo_conto].nil? and params[:anno].nil? then
+      params[:tipo_conto] = session[:movements_tipo_conto]
+    end
 
 #      if !session[:movements_tipo_conto].nil? then
 #        params[:tipo_conto] = session[:movements_tipo_conto]
@@ -84,6 +87,12 @@ class MovementsController < ApplicationController
     session[:movements_ricerca] = params[:ricerca]
     session[:movements_sort_column] = params[:sort_column]
     session[:movements_sort_order] = params[:sort_order]
+
+    respond_to do |format|
+      format.html
+      format.xls
+    end
+
   end
 
   # GET /movements/1
