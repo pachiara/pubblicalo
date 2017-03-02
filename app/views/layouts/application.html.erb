@@ -32,7 +32,16 @@
    <script>
    $(function () {
      $("input.slider").bootstrapSlider();
-     $('#livello').slider();
+     $('#livello').slider({
+       formatter: function(value) {
+         if (value == 0) {
+           testo = "Tutti i livelli";
+         } else {
+           var testo = "Livello del conto: " + value;
+         }
+         return testo;
+      }
+     });
      $('[data-toggle="tooltip"]').tooltip()
      $('#tipo_conto').bootstrapToggle();
    })
@@ -52,7 +61,7 @@
          var testo = "Livello del conto: " + value;
        }
        return testo;
-	   }
+    }
    });
    </script>
  </body>
