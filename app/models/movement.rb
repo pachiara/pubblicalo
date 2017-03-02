@@ -39,10 +39,9 @@ class Movement < Flexirest::Base
 
   def api_authenticate (name, request)
     # rinnova token
-    # curl -k -d "grant_type=client_credentials" -H "Authorization: Basic Wm5VblU5b2g1NnhHMklZRVNfX0dld1R0aUFnYTo3VElBME1ySlRzcUhIVlQ4RnEwTElLOTRET2Nh" https://api.integrazione.lispa.it/oauth2/token
+    # curl -k -d "grant_type=client_credentials" -H "Authorization: Basic UURrSEhQdnoyOTRGM2U4R3JiT0duNjRGbW1jYTo3YmZ6VkNLY25sVlZOcHJCUVZHQXc0aURvOGth" https://api.integrazione.lispa.it/oauth2/token
     # esegue richiesta
-    # curl -X GET --header "Accept: application/json" --header "Authorization: Bearer 5d1cbfa83921f594213250b1a8b2a94d" "https://api.integrazione.lispa.it/t/servizi.rl/pubblica.lo/1.0/accounts"
-
+    # curl -X GET --header 'Accept: application/json' --header 'Authorization: Bearer efb49d75-fe2d-32e6-9176-951120fd1e53' 'https://api.integrazione.lispa.it/t/servizi.rl/pubblica.lo/1.0/accounts?mandante=130&societa=1000&tipo_conto=E&livello=1&sort_column=conto&sort_order=ASC&page=1&per_page=20'
     return if PUBBLICALO['api_gw'] == "false"
     get_token
     request.headers["Authorization"] = "Bearer "+@@token.token
