@@ -11,7 +11,6 @@
           </div>
           <div class="form-group">
             <%= label_tag 'tipo_conto', 'tipo conto', {class: 'sr-only'} %>
-
             <%= check_box_tag "tipo_conto", params[:tipo_conto],
                 if params[:tipo_conto]=="U" then true else false end,
                 data: {:toggle => "toggle",
@@ -20,19 +19,16 @@
                        :onstyle => "success",
                        :offstyle => "info"}
             %>
-
           </div>
           <div class="form-group">
-            <%= label_tag 'livello', 'Livello:' %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <%= label_tag 'livello', 'Livello:' %>&nbsp;&nbsp;
             <%= text_field_tag 'livello', params[:livello], type: 'text',
             "data-provide" => 'slider',
-            "data-slider-ticks" => '[0, 1, 2, 3, 4, 5]',
-            "data-slider-ticks-labels" => '["Tutti","1", "2", "3", "4", "5"]',
             "data-slider-min" => '0',
             "data-slider-max" => '5',
             "data-slider-step" => '1',
             "data-slider-value" => params[:livello],
-            "data-slider-tooltip" => 'hide',
+            "data-slider-tooltip" => 'always',
             onchange: 'this.form.submit()'
             %>
           </div>
