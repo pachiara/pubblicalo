@@ -55,10 +55,11 @@ class Movement < Flexirest::Base
 
     if @@token.nil? || @@token.expired?
       client = OAuth2::Client.new(client_id, client_secret, :site => site_path, :token_url => token_url)
-      code    = client.client_credentials.authorization(client_id, client_secret)
-      @@token = client.get_token(:headers => {'Authorization' => code},
-                                 :content_type => 'application/x-www-form-urlencoded',
-                                 :grant_type => 'client_credentials')
+      #code    = client.client_credentials.authorization(client_id, client_secret)
+      #@@token = client.get_token(:headers => {'Authorization' => code},
+      #                           :content_type => 'application/x-www-form-urlencoded',
+      #                           :grant_type => 'client_credentials')
+      @@token = client.client_credentials.get_token
     end
   end
 
