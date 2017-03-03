@@ -31,8 +31,8 @@
                 <% end %>
                 <% if movement.livello < 6 %>
                   <a class="btn btn-primary btn-md" role="button" href="#<%= movement.id %>" aria-expanded="false"
-                     id="btn_grafico<%= movement.id %>" data-toggle="tooltip" data-placement="top"
-                     title="Grafico" onmouseover="$('#btn_grafico<%= movement.id %>').tooltip('show')"
+                     id="btn_grafico<%= movement.id %>" data-toggle="tooltip" data-placement="right"
+                     title="Grafico a barre mese su mese, a torta con i livelli superiori." onmouseover="$('#btn_grafico<%= movement.id %>').tooltip('show')"
                      aria-controls="#<%= movement.id %>" onclick="grafici(this, '<%= movement.idConto %>')"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span></a>
                 <% end %>
               </div>

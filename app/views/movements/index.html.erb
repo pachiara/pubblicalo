@@ -90,8 +90,8 @@
               <% end %>
               <% if movement.livello < 6 %>
                   <a class="btn btn-primary btn-md" role="button" href="#<%= movement.id %>" aria-expanded="false" aria-label="grafici"
-                     id="btn_grafico" data-toggle="tooltip" data-placement="top"
-                     title="Grafico"
+                     id="btn_grafico" data-toggle="tooltip" data-placement="right"
+                     title="Grafico a barre mese su mese, a torta con i livelli superiori."
                      aria-controls="#<%= movement.id %>" onclick="grafici(this, '<%= movement.idConto %>')"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span></a>
                 </div>
               <% end %>
