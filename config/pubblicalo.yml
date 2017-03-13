@@ -25,9 +25,14 @@ production:
   <<: *default
   #  base_url:    "http://localhost/pubblicalo_api/api/v1"
   api_gw:        "true"
-  base_url:      "https://api.integrazione.lispa.it/t/servizi.rl/pubblica.lo/"
-  site_path:     "https://api.integrazione.lispa.it"
-  token_url:     "https://api.integrazione.lispa.it/oauth2/token"
+  # se il client e' su internet
+  #  base_url:      "https://api.integrazione.lispa.it/t/servizi.rl/pubblica.lo/"
+  #  site_path:     "https://api.integrazione.lispa.it"
+  #  token_url:     "https://api.integrazione.lispa.it/oauth2/token"
+  # se il client e' su intranet
+  base_url:      "https://am.wso2.lispa.local/t/servizi.rl/pubblica.lo/"
+  site_path:     "https://am.wso2.lispa.local"
+  token_url:     "https://am.wso2.lispa.local/oauth2/token"
   # key per pre-it
   client_id:     "QDkHHPvz294F3e8GrbOGn64Fmmca"
   client_secret: "7bfzVCKcnlVVNprBQVGAw4iDo8ka"
